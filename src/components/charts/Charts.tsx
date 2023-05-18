@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Chart, ChartSeries, ChartSeriesItem, ChartCategoryAxis, ChartTitle, ChartCategoryAxisItem } from '@progress/kendo-react-charts';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import axios from 'axios';
 
 interface CountryData {
@@ -64,8 +64,28 @@ const MapWithMarkers: React.FC = () => {
         fetchData();
     }, []);
 
+    // const MapCenter = () => {
+    //     const map = useMap();
+    //     if (countriesData.length > 0) {
+    //         const { lat, long } = countriesData[0];
+    //         map.setView([lat, long], 2);
+    //     }
+    //     return null;
+    // };
+    const MapCenter = () => {
+        const map = useMap();
+        if (countriesData.length > 0) {
+            const { lat, long } = countriesData[0];
+            if (typeof lat === 'number' && typeof long === 'number') {
+                map.setView([lat, long], 2);
+            }
+        }
+        return null;
+    };
+
     return (
-        <MapContainer style={{ height: '400px', width: '100%' }} center={[0, 0]} zoom={2}>
+        <MapContainer style={{ height: '400px', width: '100%' }}>
+            <MapCenter />
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {countriesData.map((country) => {
                 const { lat, long } = country;
