@@ -43,7 +43,7 @@ const ContactForm: React.FC<AddContact> = ({ toggleDialog, visible, dataCopy, ad
         <div>
             {visible && (
                 <>
-                    {add ? (<Dialog title={"Add INCO"} onClose={AddFormClose} width={"500px"}>
+                    {add ? (<Dialog title={"Add New Contact"} onClose={AddFormClose} width={"500px"}>
                         <form className="dialog-form" onSubmit={(e) => {
                             dataCopy.func(e, addContact);
                             AddFormClose();
@@ -98,7 +98,7 @@ const ContactForm: React.FC<AddContact> = ({ toggleDialog, visible, dataCopy, ad
                         </form>
                     </Dialog>
                     ) : (
-                        <Dialog title={"Edit INCO"} onClose={EditFormClose} width={"500px"}>
+                        <Dialog title={"Edit Contact"} onClose={EditFormClose} width={"500px"}>
                             <form className="dialog-form" onSubmit={(e) => {
                                 dataCopy.func(e, editContact);
                                 EditFormClose()
