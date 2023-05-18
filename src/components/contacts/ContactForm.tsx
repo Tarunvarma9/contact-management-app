@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Input } from "@progress/kendo-react-inputs";
-import { ToastContainer, toast } from "react-toastify"
 import { Dialog, DialogActionsBar } from "@progress/kendo-react-dialogs";
 
 interface AddContact {
